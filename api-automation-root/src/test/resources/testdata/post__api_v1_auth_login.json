@@ -1,0 +1,51 @@
+{
+  "TC-TEST-17-1": {},
+  "TC-TEST-17-2": {},
+  "TC-TEST-17-3": {
+    "overrides": {
+      "password": "WrongPassword123"
+    }
+  },
+  "TC-TEST-17-4": {
+    "overrides": {
+      "email": "unregistered_user@example.com",
+      "password": "any_password"
+    }
+  },
+  "TC-TEST-17-6": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TC-TEST-17-7": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TC-TEST-17-8": {
+    "overrides": {
+      "email": "not-a-valid-email"
+    }
+  },
+  "TC-TEST-17-9": {
+    "overrides": {
+      "email": ""
+    }
+  },
+  "TC-TEST-17-10": {
+    "overrides": {
+      "password": ""
+    }
+  },
+  "TC-TEST-17-11": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-TEST-17-12": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"user@example.com\", \"password\": \"Secure@Pass1\""
+    }
+  }
+}
