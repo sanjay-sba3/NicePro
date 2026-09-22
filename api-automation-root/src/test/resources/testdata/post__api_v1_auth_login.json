@@ -1,0 +1,88 @@
+{
+  "TC-TEST-17-TC1": {
+    "overrides": {
+      "email": "mfa.disabled.user@example.com",
+      "password": "SecurePassword123"
+    }
+  },
+  "TC-TEST-17-TC2": {
+    "overrides": {
+      "email": "mfa.enabled.user@example.com",
+      "password": "SecurePasswordXYZ"
+    }
+  },
+  "TC-TEST-17-TC3": {
+    "remove": [
+      "email"
+    ],
+    "overrides": {
+      "password": "SecurePassword123"
+    }
+  },
+  "TC-TEST-17-TC4": {
+    "remove": [
+      "password"
+    ],
+    "overrides": {
+      "email": "test@example.com"
+    }
+  },
+  "TC-TEST-17-TC5": {
+    "overrides": {
+      "email": "invalid-email",
+      "password": "SecurePassword123"
+    }
+  },
+  "TC-TEST-17-TC6": {
+    "overrides": {
+      "email": "registered.user@example.com",
+      "password": "IncorrectPassword"
+    }
+  },
+  "TC-TEST-17-TC7": {
+    "overrides": {
+      "email": "{{random.email}}",
+      "password": "AnyPassword123"
+    }
+  },
+  "TC-TEST-17-TC8": {
+    "request_body": {
+      "type": "RAW_JSON",
+      "value": "{\"email\":12345,\"password\":\"SecurePassword123\"}"
+    }
+  },
+  "TC-TEST-17-TC9": {
+    "request_body": {
+      "type": "RAW_JSON",
+      "value": "{\"email\":\"test@example.com\",\"password\":true}"
+    }
+  },
+  "TC-TEST-17-TC10": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"test@example.com\", \"password\": \"SecurePassword123\""
+    }
+  },
+  "TC-TEST-17-TC11": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-TEST-17-TC12": {
+    "request_body": {
+      "type": "NULL"
+    }
+  },
+  "TC-TEST-17-TC13": {
+    "overrides": {
+      "email": "test@example.com",
+      "password": "SecurePassword123"
+    }
+  },
+  "TC-TEST-17-TC14": {
+    "overrides": {
+      "email": "test@example.com",
+      "password": "SecurePassword123"
+    }
+  }
+}
