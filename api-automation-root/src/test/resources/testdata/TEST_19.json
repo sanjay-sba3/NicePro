@@ -1,0 +1,80 @@
+{
+  "TC1": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "{{auth.password}}"
+    }
+  },
+  "TC2": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "{{auth.password}}"
+    }
+  },
+  "TC3": {
+    "request_body": {
+      "type": "MISSING_BODY"
+    }
+  },
+  "TC4": {
+    "request_body": {
+      "type": "MISSING_BODY"
+    }
+  },
+  "TC5": {
+    "request_body": {
+      "type": "MISSING_BODY"
+    }
+  },
+  "TC6": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "{{auth.password}}"
+    }
+  },
+  "TC7": {
+    "overrides": {
+      "email": "{{auth.mfa_username}}",
+      "password": "{{auth.mfa_password}}"
+    }
+  },
+  "TC8": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "IncorrectPassword"
+    }
+  },
+  "TC9": {
+    "overrides": {
+      "email": "no-such-user@example.com",
+      "password": "any-password"
+    }
+  },
+  "TC10": {},
+  "TC11": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TC12": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TC13": {
+    "overrides": {
+      "email": "not-a-valid-email"
+    }
+  },
+  "TC14": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"alice@example.com\", \"password\": \"Secure@Pass1\""
+    }
+  },
+  "TC15": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  }
+}
