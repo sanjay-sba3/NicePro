@@ -1,0 +1,54 @@
+{
+  "PATCH /api/v1/cart/items/{item_id}": {
+    "quantity": "{{random.quantity}}"
+  },
+  "PATCH /api/v1/users/me": {
+    "bio": "{{random.bio}}",
+    "last_name": "{{random.last_name}}",
+    "first_name": "{{random.first_name}}",
+    "occupation": "{{random.occupation}}",
+    "phone_number": "{{random.phone_number}}"
+  },
+  "PATCH /api/v1/users/me/mfa": {
+    "is_mfa_enabled": "{{random.is_mfa_enabled}}"
+  },
+  "PATCH /api/v1/users/me/preferences": {
+    "preferences": "{{random.preferences}}"
+  },
+  "POST /api/v1/auth/login": {
+    "email": "{{auth.username}}",
+    "password": "{{auth.password}}"
+  },
+  "POST /api/v1/auth/mfa/verify": {
+    "otp": "{{random.otp}}",
+    "pre_auth_token": "{{random.pre_auth_token}}"
+  },
+  "POST /api/v1/auth/register": {
+    "email": "{{random.email}}",
+    "password": "{{random.password}}",
+    "last_name": "{{random.last_name}}",
+    "first_name": "{{random.first_name}}",
+    "confirm_password": "{{random.confirm_password}}"
+  },
+  "POST /api/v1/cart/items": {
+    "quantity": "{{random.quantity}}",
+    "product_id": "{{random.product_id}}"
+  },
+  "POST /api/v1/products": {
+    "name": "{{random.name}}",
+    "price": "{{random.price}}",
+    "category": "{{random.category}}",
+    "image_url": "{{random.image_url}}",
+    "is_active": "{{random.is_active}}",
+    "description": "{{random.description}}",
+    "stock_quantity": "{{random.stock_quantity}}"
+  },
+  "POST /api/v1/users/me/change-password": {
+    "new_password": "{{auth.password}}",
+    "old_password": "{{auth.password}}",
+    "confirm_new_password": "{{auth.password}}"
+  },
+  "POST /api/v1/users/me/photo": {
+    "file": "{{random.file}}"
+  }
+}
