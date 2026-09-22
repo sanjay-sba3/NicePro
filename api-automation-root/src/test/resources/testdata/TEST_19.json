@@ -1,0 +1,72 @@
+{
+  "TC-1": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "{{auth.password}}"
+    }
+  },
+  "TC-2": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "{{auth.password}}"
+    }
+  },
+  "TC-3": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TC-4": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TC-5": {
+    "overrides": {
+      "email": "invalid-email"
+    }
+  },
+  "TC-6": {
+    "overrides": {
+      "email": "{{random.email}}",
+      "password": "{{auth.password}}"
+    }
+  },
+  "TC-7": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "{{random.password}}"
+    }
+  },
+  "TC-8": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{ \"email\": \"{{auth.username}}\", \"password\": \"{{auth.password}}\","
+    }
+  },
+  "TC-9": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-10": {
+    "request_body": {
+      "type": "NULL"
+    }
+  },
+  "TC-11": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "{{auth.password}}"
+    }
+  },
+  "TC-12": {},
+  "TC-13": {},
+  "TC-14": {},
+  "TC-15": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "{{auth.password}}"
+    }
+  }
+}
