@@ -1,0 +1,102 @@
+{
+  "TC-TEST17-001": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "{{auth.password}}"
+    }
+  },
+  "TC-TEST17-002": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "{{auth.password}}"
+    }
+  },
+  "TC-TEST17-003": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "IncorrectPassword123"
+    }
+  },
+  "TC-TEST17-004": {
+    "overrides": {
+      "email": "nonexistent_user@example.com",
+      "password": "any_password"
+    }
+  },
+  "TC-TEST17-005": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TC-TEST17-006": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TC-TEST17-007": {
+    "overrides": {
+      "email": "",
+      "password": "ValidPassword123"
+    }
+  },
+  "TC-TEST17-008": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": ""
+    }
+  },
+  "TC-TEST17-009": {
+    "overrides": {
+      "email": "not-a-valid-email",
+      "password": "ValidPassword123"
+    }
+  },
+  "TC-TEST17-010": {
+    "overrides": {
+      "email": null,
+      "password": "ValidPassword123"
+    }
+  },
+  "TC-TEST17-011": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": null
+    }
+  },
+  "TC-TEST17-012": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-TEST17-013": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"user@example.com\", \"password\": \"pass\""
+    }
+  },
+  "TC-TEST17-014": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "{{auth.password}}",
+      "extraField": "someValue"
+    }
+  },
+  "TC-TEST17-015": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "{{auth.password}}"
+    }
+  },
+  "TC-TEST17-016": {
+    "overrides": {
+      "email": "{{auth.username}}",
+      "password": "IncorrectPassword"
+    }
+  },
+  "TC-TEST17-017": {
+    "overrides": {
+      "email": "invalid-email",
+      "password": "any_password"
+    }
+  }
+}
