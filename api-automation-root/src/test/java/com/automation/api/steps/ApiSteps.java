@@ -169,11 +169,11 @@ public class ApiSteps {
         if (!("POST".equalsIgnoreCase(method) || "PUT".equalsIgnoreCase(method) || "PATCH".equalsIgnoreCase(method))) {
             return;
         }
-        String type = TcTestDataResolver.requestBodyType(featureSlug, activeTcId);
+        String type = TcTestDataResolver.requestBodyType(featureSlug, activeTcId, method, path);
         switch (type.toUpperCase()) {
             case "NORMAL" -> {
                 Map<String, Object> payload = GlobalPayloadResolver.resolve(method, path);
-                TcTestDataResolver.applyTestCase(payload, featureSlug, activeTcId);
+                TcTestDataResolver.applyTestCase(payload, featureSlug, activeTcId, method, path);
                 writeResolvedRequestBody(payload);
             }
             case "EMPTY_OBJECT" -> context.save("requestBody", "{}");
@@ -183,7 +183,7 @@ public class ApiSteps {
             // all, same as a POST/PUT/PATCH scenario that never builds one today.
             case "MISSING_BODY" -> { }
             case "MALFORMED_JSON", "RAW_JSON" -> context.save("requestBody",
-                context.resolvePlaceholders(TcTestDataResolver.requestBodyRawValue(featureSlug, activeTcId)));
+                context.resolvePlaceholders(TcTestDataResolver.requestBodyRawValue(featureSlug, activeTcId, method, path)));
             default -> throw new IllegalStateException(
                 "Unsupported request_body.type \"" + type + "\" for TC \"" + activeTcId + "\" in " + featureSlug
                     + " -- ApiSteps.java only supports NORMAL/MALFORMED_JSON/RAW_JSON/EMPTY_OBJECT/EMPTY_ARRAY/NULL/MISSING_BODY.");
