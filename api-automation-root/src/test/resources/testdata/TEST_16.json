@@ -1,0 +1,60 @@
+{
+  "TC-TEST-16-01": {},
+  "TC-TEST-16-02": {},
+  "TC-TEST-16-03": {
+    "overrides": {
+      "confirm_password": "{{random.password}}"
+    }
+  },
+  "TC-TEST-16-04": {
+    "overrides": {
+      "password": "secure@pass1",
+      "confirm_password": "secure@pass1"
+    }
+  },
+  "TC-TEST-16-05": {
+    "overrides": {
+      "password": "SECURE@PASS1",
+      "confirm_password": "SECURE@PASS1"
+    }
+  },
+  "TC-TEST-16-06": {
+    "overrides": {
+      "password": "Secure@Pass",
+      "confirm_password": "Secure@Pass"
+    }
+  },
+  "TC-TEST-16-07": {
+    "overrides": {
+      "password": "SecurePass1",
+      "confirm_password": "SecurePass1"
+    }
+  },
+  "TC-TEST-16-08": {
+    "overrides": {
+      "password": "S@cur1!",
+      "confirm_password": "S@cur1!"
+    }
+  },
+  "TC-TEST-16-09": {
+    "remove": [
+      "first_name"
+    ]
+  },
+  "TC-TEST-16-10": {
+    "overrides": {
+      "email": "invalid-email-format"
+    }
+  },
+  "TC-TEST-16-11": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"malformed@example.com\", \"password\": \"Secure@Pass1\", \"confirm_password\": \"Secure@Pass1\", \"first_name\": \"Judy\", \"last_name\": \"Lane\",}"
+    }
+  },
+  "TC-TEST-16-12": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  }
+}
