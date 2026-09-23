@@ -1,0 +1,45 @@
+{
+  "TC-1": {},
+  "TC-2": {},
+  "TC-3": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TC-4": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TC-5": {
+    "overrides": {
+      "email": "invalid-email-format"
+    }
+  },
+  "TC-6": {
+    "overrides": {
+      "password": "IncorrectPassword"
+    }
+  },
+  "TC-7": {
+    "overrides": {
+      "email": "{{random.email}}"
+    }
+  },
+  "TC-8": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-9": {
+    "request_body": {
+      "type": "NULL"
+    }
+  },
+  "TC-10": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"test@example.com\", \"password\": \"password\""
+    }
+  }
+}
