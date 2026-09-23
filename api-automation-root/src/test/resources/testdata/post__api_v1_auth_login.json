@@ -1,0 +1,79 @@
+{
+  "TC-LOGIN-001": {
+    "overrides": {
+      "email": "mfa_disabled_user@example.com"
+    }
+  },
+  "TC-LOGIN-002": {
+    "overrides": {
+      "email": "mfa_enabled_user@example.com"
+    }
+  },
+  "TC-LOGIN-003": {
+    "overrides": {
+      "email": "mfa_disabled_user@example.com"
+    }
+  },
+  "TC-LOGIN-004": {
+    "overrides": {
+      "email": "mfa_disabled_user@example.com",
+      "password": "WrongPassword123"
+    }
+  },
+  "TC-LOGIN-005": {
+    "overrides": {
+      "email": "nonexistent-user@example.com",
+      "password": "any-password"
+    }
+  },
+  "TC-LOGIN-006": {
+    "overrides": {
+      "email": "mfa_disabled_user@example.com",
+      "password": "WrongPassword123"
+    }
+  },
+  "TC-LOGIN-007": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TC-LOGIN-008": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TC-LOGIN-009": {
+    "overrides": {
+      "email": "not-an-email",
+      "password": "Secure@Pass1"
+    }
+  },
+  "TC-LOGIN-010": {
+    "overrides": {
+      "email": "",
+      "password": "Secure@Pass1"
+    }
+  },
+  "TC-LOGIN-011": {
+    "overrides": {
+      "email": "mfa_disabled_user@example.com",
+      "password": ""
+    }
+  },
+  "TC-LOGIN-012": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-LOGIN-013": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"test@example.com\", \"password\": \"password\",}"
+    }
+  },
+  "TC-LOGIN-014": {
+    "request_body": {
+      "type": "NULL"
+    }
+  }
+}
