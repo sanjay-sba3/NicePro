@@ -1,0 +1,40 @@
+{
+  "TC-1": {},
+  "TC-2": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TC-3": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TC-4": {
+    "overrides": {
+      "email": "not-a-valid-email"
+    }
+  },
+  "TC-5": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-6": {
+    "overrides": {
+      "email": "nonexistent@example.com",
+      "password": "anypassword"
+    }
+  },
+  "TC-7": {
+    "overrides": {
+      "password": "WrongPassword123"
+    }
+  },
+  "TC-9": {},
+  "TC-10": {},
+  "TC-11": {},
+  "TC-12": {},
+  "TC-13": {},
+  "TC-14": {}
+}
