@@ -1,0 +1,239 @@
+{
+  "TC-1": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Sparkling Mineral Water 1L",
+          "price": "4.99",
+          "category": "Beverages",
+          "image_url": "https://example.com/images/sparkling-water.jpg",
+          "is_active": true,
+          "description": "Naturally sourced sparkling mineral water, 1 litre bottle.",
+          "stock_quantity": 100
+        }
+      }
+    }
+  },
+  "TC-2": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Unauthenticated Product",
+          "price": 10,
+          "category": "Test Category"
+        }
+      }
+    }
+  },
+  "TC-3": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "price": 19.99,
+          "category": "Electronics"
+        },
+        "remove": [
+          "name"
+        ]
+      }
+    }
+  },
+  "TC-4": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Product Without Price",
+          "category": "Books"
+        },
+        "remove": [
+          "price"
+        ]
+      }
+    }
+  },
+  "TC-5": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Product Without Category",
+          "price": 12.5
+        },
+        "remove": [
+          "category"
+        ]
+      }
+    }
+  },
+  "TC-6": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Minimal Product",
+          "price": 99.99,
+          "category": "Gadgets"
+        },
+        "remove": [
+          "image_url",
+          "is_active",
+          "description",
+          "stock_quantity"
+        ]
+      }
+    }
+  },
+  "TC-7": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "",
+          "price": 19.99,
+          "category": "Electronics"
+        }
+      }
+    }
+  },
+  "TC-8": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "price": 19.99,
+          "category": "Electronics"
+        }
+      }
+    }
+  },
+  "TC-9": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Test Product",
+          "price": 19.99,
+          "category": ""
+        }
+      }
+    }
+  },
+  "TC-10": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Test Product",
+          "price": 19.99,
+          "category": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    }
+  },
+  "TC-11": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Negative Price Product",
+          "price": -10.5,
+          "category": "Invalid"
+        }
+      }
+    }
+  },
+  "TC-12": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Free Product",
+          "price": 0,
+          "category": "Promotions"
+        }
+      }
+    }
+  },
+  "TC-13": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Negative Stock Product",
+          "price": 5,
+          "category": "Invalid",
+          "stock_quantity": -1
+        }
+      }
+    }
+  },
+  "TC-14": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Out of Stock Product",
+          "price": 25,
+          "category": "Rare Items",
+          "stock_quantity": 0
+        }
+      }
+    }
+  },
+  "TC-15": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Long URL Product",
+          "price": 15,
+          "category": "Test",
+          "image_url": "http://example.com/cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.jpg"
+        }
+      }
+    }
+  },
+  "TC-16": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Invalid Active Product",
+          "price": 8,
+          "category": "Test",
+          "is_active": "true"
+        }
+      }
+    }
+  },
+  "TC-17": {
+    "requests": {
+      "POST /api/v1/products": {
+        "overrides": {
+          "name": "Invalid Stock Product",
+          "price": 9,
+          "category": "Test",
+          "stock_quantity": "one hundred"
+        }
+      }
+    }
+  },
+  "TC-18": {
+    "requests": {
+      "POST /api/v1/products": {
+        "request_body": {
+          "type": "MALFORMED_JSON",
+          "value": "{\"name\": \"test\", \"price\": 1.00,}"
+        }
+      }
+    }
+  },
+  "TC-19": {
+    "requests": {
+      "POST /api/v1/products": {
+        "request_body": {
+          "type": "RAW_JSON",
+          "value": "[{\"name\":\"test\",\"price\":1,\"category\":\"cat\"}]"
+        }
+      }
+    }
+  },
+  "TC-20": {
+    "requests": {
+      "POST /api/v1/products": {
+        "request_body": {
+          "type": "NULL"
+        }
+      }
+    }
+  }
+}
