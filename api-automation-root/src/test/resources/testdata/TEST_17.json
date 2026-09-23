@@ -1,0 +1,57 @@
+{
+  "TEST-17-TC1": {},
+  "TEST-17-TC2": {
+    "overrides": {
+      "email": "{{auth.mfa_enabled_username}}",
+      "password": "{{auth.mfa_enabled_password}}"
+    }
+  },
+  "TEST-17-TC3": {},
+  "TEST-17-TC4": {
+    "overrides": {
+      "password": "IncorrectPassword"
+    }
+  },
+  "TEST-17-TC5": {
+    "overrides": {
+      "email": "{{random.email}}",
+      "password": "anyPassword"
+    }
+  },
+  "TEST-17-TC6": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TEST-17-TC7": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TEST-17-TC8": {
+    "overrides": {
+      "email": "not-an-email"
+    }
+  },
+  "TEST-17-TC9": {
+    "overrides": {
+      "email": ""
+    }
+  },
+  "TEST-17-TC10": {
+    "overrides": {
+      "password": ""
+    }
+  },
+  "TEST-17-TC11": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TEST-17-TC12": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"user@example.com\", \"password\": \"pass\""
+    }
+  }
+}
