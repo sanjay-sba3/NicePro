@@ -1,0 +1,55 @@
+{
+  "TC-LOGIN-001": {},
+  "TC-LOGIN-002": {
+    "overrides": {
+      "password": "WrongPassword123!"
+    }
+  },
+  "TC-LOGIN-003": {
+    "overrides": {
+      "email": "unregistered@example.com",
+      "password": "anypassword"
+    }
+  },
+  "TC-LOGIN-004": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TC-LOGIN-005": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TC-LOGIN-006": {
+    "overrides": {
+      "email": ""
+    }
+  },
+  "TC-LOGIN-007": {
+    "overrides": {
+      "password": ""
+    }
+  },
+  "TC-LOGIN-008": {
+    "overrides": {
+      "email": "not-a-valid-email"
+    }
+  },
+  "TC-LOGIN-009": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"alice@example.com\", \"password\": \"Secure@Pass1\""
+    }
+  },
+  "TC-LOGIN-010": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-LOGIN-011": {
+    "request_body": {
+      "type": "NULL"
+    }
+  }
+}
