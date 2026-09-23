@@ -1,0 +1,37 @@
+{
+  "TC-TEST-19-1": {},
+  "TC-TEST-19-2": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TC-TEST-19-3": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TC-TEST-19-4": {
+    "overrides": {
+      "email": "not-a-valid-email"
+    }
+  },
+  "TC-TEST-19-5": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-TEST-19-6": {
+    "overrides": {
+      "email": "nonexistent@example.com",
+      "password": "anypassword"
+    }
+  },
+  "TC-TEST-19-7": {
+    "overrides": {
+      "password": "WrongPassword123"
+    }
+  },
+  "TC-TEST-19-9": {},
+  "TC-TEST-19-10": {},
+  "TC-TEST-19-11": {}
+}
