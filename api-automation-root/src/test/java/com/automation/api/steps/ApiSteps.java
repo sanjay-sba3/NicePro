@@ -257,6 +257,10 @@ public class ApiSteps {
         context.save("lastPath", resolvedPath);
         context.save("requestEvidence", method + " " + resolvedPath + (requestBody != null ? "\nBody: " + requestBody : ""));
         context.save("responseEvidence", "Status: " + response.getStatusCode() + "\nBody: " + safeBody(response));
+        // Journey scenarios send several requests through this same ApiContext instance --
+        // drop the body now so the NEXT "When I send" rebuilds its own (explicit payload step
+        // or maybeAutoResolvePayload) instead of silently resending this one's.
+        context.clear("requestBody");
     }
 
     @Then("the response status code should be {int}")

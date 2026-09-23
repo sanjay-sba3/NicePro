@@ -44,6 +44,14 @@ public class ApiContext {
         return store.containsKey(name);
     }
 
+    // Used by ApiSteps to drop "requestBody" right after each request is sent -- a journey
+    // scenario sends multiple requests through the SAME ApiContext instance, so leaving a
+    // built body in the store would make every later "When I send" in that scenario silently
+    // reuse the first request's body instead of building its own.
+    public void clear(String name) {
+        store.remove(name);
+    }
+
     // "{{auth.username}}"/"{{auth.password}}"/"{{auth.otp}}" -- a real, pre-existing test
     // account's credentials, resolved from auth_credentials.properties (never a literal in
     // any git-committed api-payload.json/testdata/<slug>.json -- see AuthCredentialsResolver).
