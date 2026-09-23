@@ -1,0 +1,27 @@
+{
+  "TC-JRN-01": {},
+  "TC-TEST-19-02": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-TEST-19-03": {
+    "overrides": {
+      "email": "not-a-valid-email",
+      "password": "anypassword"
+    }
+  },
+  "TC-TEST-19-04": {
+    "overrides": {
+      "password": "WrongPassword123!"
+    }
+  },
+  "TC-TEST-19-05": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"alice@example.com\", \"password\": \"Secure@Pass1\""
+    }
+  },
+  "TC-TEST-19-07": {},
+  "TC-TEST-19-08": {}
+}
