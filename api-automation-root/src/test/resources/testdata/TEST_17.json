@@ -1,0 +1,65 @@
+{
+  "TC-TEST-17-001": {},
+  "TC-TEST-17-002": {
+    "overrides": {
+      "email": "{{auth.mfa_user.email}}",
+      "password": "{{auth.mfa_user.password}}"
+    }
+  },
+  "TC-TEST-17-003": {},
+  "TC-TEST-17-004": {
+    "overrides": {
+      "password": "IncorrectPassword"
+    }
+  },
+  "TC-TEST-17-005": {
+    "overrides": {
+      "email": "non.existent.user@example.com",
+      "password": "anyPassword"
+    }
+  },
+  "TC-TEST-17-006": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TC-TEST-17-007": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TC-TEST-17-008": {
+    "overrides": {
+      "email": "not-an-email",
+      "password": "anyPassword"
+    }
+  },
+  "TC-TEST-17-009": {
+    "overrides": {
+      "email": "",
+      "password": "anyPassword"
+    }
+  },
+  "TC-TEST-17-010": {
+    "overrides": {
+      "password": ""
+    }
+  },
+  "TC-TEST-17-011": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-TEST-17-012": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"user@example.com\", \"password\": \"pass\""
+    }
+  },
+  "TC-TEST-17-013": {
+    "overrides": {
+      "email": "non.existent.user@example.com",
+      "password": "anyPassword"
+    }
+  }
+}
