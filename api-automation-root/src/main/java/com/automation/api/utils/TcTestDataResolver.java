@@ -30,6 +30,17 @@ import java.util.concurrent.ConcurrentHashMap;
  * {@code overrides}/{@code remove}/{@code add} under an explicit {@code request_body} object
  * with a {@code type} -- see {@link #requestBodyType} / {@link #requestBodyRawValue} and
  * framework/SKILL.md's `request_body.type` table for the full contract.
+ *
+ * A journey scenario carries ONE {@code @TC-...} tag but sends several requests through
+ * {@code iSendARequestTo} -- a TC entry needing DIFFERENT overrides per call wraps them under a
+ * {@code "requests"} object keyed by the same literal {@code "<METHOD> <path>"} string
+ * {@code api-payload.json} uses, e.g. {@code {"requests": {"POST /cart/items": {"overrides":
+ * {...}}}}}. When {@code "requests"} is present, every method+path in it applies only its OWN
+ * fields to that ONE call; any call in the journey with no matching entry gets the untouched
+ * global base payload -- never another call's overrides. Omitting {@code "requests"} entirely
+ * keeps the original one-scenario-one-request behavior unchanged: the TC entry's own top-level
+ * {@code overrides}/{@code remove}/{@code add} (or {@code request_body}) apply to whichever
+ * single request that TC builds.
  */
 public class TcTestDataResolver {
     private static final Path TESTDATA_DIR = Paths.get("src/test/resources/testdata");
@@ -47,12 +58,16 @@ public class TcTestDataResolver {
      * model/file IS always a hard failure). Only meaningful for the {@code NORMAL}
      * {@code request_body.type} -- callers check {@link #requestBodyType} first.
      */
-    public static void applyTestCase(Map<String, Object> payload, String featureSlug, String tcId) {
+    public static void applyTestCase(Map<String, Object> payload, String featureSlug, String tcId, String method, String path) {
         JsonNode tcNode = tcNode(featureSlug, tcId);
         if (tcNode == null) {
             return;
         }
-        JsonNode fields = fieldsNode(tcNode);
+        JsonNode callNode = callNode(tcNode, method, path);
+        if (callNode == null) {
+            return;
+        }
+        JsonNode fields = fieldsNode(callNode);
 
         JsonNode remove = fields.get("remove");
         if (remove != null && remove.isArray()) {
@@ -78,8 +93,8 @@ public class TcTestDataResolver {
      * written the old way (bare {@code overrides}/{@code remove}/{@code add}, no
      * {@code request_body} wrapper at all) is exactly the {@code NORMAL} case, unchanged.
      */
-    public static String requestBodyType(String featureSlug, String tcId) {
-        JsonNode requestBody = requestBodyNode(featureSlug, tcId);
+    public static String requestBodyType(String featureSlug, String tcId, String method, String path) {
+        JsonNode requestBody = requestBodyNode(featureSlug, tcId, method, path);
         JsonNode type = requestBody != null ? requestBody.get("type") : null;
         return type != null && !type.isNull() ? type.asText("NORMAL") : "NORMAL";
     }
@@ -90,8 +105,8 @@ public class TcTestDataResolver {
      * {@code MALFORMED_JSON} value is genuinely invalid JSON, and must stay that way on the
      * wire). Fails fast when {@code value} is missing or not a string -- both types require it.
      */
-    public static String requestBodyRawValue(String featureSlug, String tcId) {
-        JsonNode requestBody = requestBodyNode(featureSlug, tcId);
+    public static String requestBodyRawValue(String featureSlug, String tcId, String method, String path) {
+        JsonNode requestBody = requestBodyNode(featureSlug, tcId, method, path);
         JsonNode value = requestBody != null ? requestBody.get("value") : null;
         if (value == null || !value.isTextual()) {
             throw new IllegalStateException(
@@ -101,21 +116,39 @@ public class TcTestDataResolver {
         return value.asText();
     }
 
-    private static JsonNode requestBodyNode(String featureSlug, String tcId) {
+    private static JsonNode requestBodyNode(String featureSlug, String tcId, String method, String path) {
         JsonNode tcNode = tcNode(featureSlug, tcId);
         if (tcNode == null) {
             return null;
         }
-        JsonNode requestBody = tcNode.get("request_body");
+        JsonNode callNode = callNode(tcNode, method, path);
+        if (callNode == null) {
+            return null;
+        }
+        JsonNode requestBody = callNode.get("request_body");
         return requestBody != null && requestBody.isObject() ? requestBody : null;
     }
 
+    // A TC entry carrying "requests" (journey, multiple calls under one TC tag) scopes
+    // overrides/remove/add/request_body to ONE method+path -- returns that call's own object,
+    // or null when this call has no entry under "requests" (base payload, untouched, is
+    // correct for it). A TC entry with no "requests" key at all is the original
+    // one-scenario-one-request shape -- the whole tcNode IS the call's fields, same as always.
+    private static JsonNode callNode(JsonNode tcNode, String method, String path) {
+        JsonNode requests = tcNode.get("requests");
+        if (requests == null || !requests.isObject()) {
+            return tcNode;
+        }
+        JsonNode match = requests.get(method.toUpperCase() + " " + path);
+        return match != null && match.isObject() ? match : null;
+    }
+
     // overrides/remove/add live inside "request_body" for a TC that also carries a "type", but
-    // stay at the TC entry's own top level for the older, pre-request_body shape -- either way,
+    // stay at the call node's own top level for the older, pre-request_body shape -- either way,
     // this is the one node applyTestCase reads all three from.
-    private static JsonNode fieldsNode(JsonNode tcNode) {
-        JsonNode requestBody = tcNode.get("request_body");
-        return requestBody != null && requestBody.isObject() ? requestBody : tcNode;
+    private static JsonNode fieldsNode(JsonNode callNode) {
+        JsonNode requestBody = callNode.get("request_body");
+        return requestBody != null && requestBody.isObject() ? requestBody : callNode;
     }
 
     private static JsonNode tcNode(String featureSlug, String tcId) {
