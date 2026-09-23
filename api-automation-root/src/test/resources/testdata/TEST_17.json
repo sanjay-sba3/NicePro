@@ -1,0 +1,71 @@
+{
+  "TC-TC1": {
+    "overrides": {
+      "email": "valid_user_mfa_disabled@example.com",
+      "password": "Secure@Pass1"
+    }
+  },
+  "TC-TC2": {
+    "overrides": {
+      "email": "valid_user_mfa_enabled@example.com",
+      "password": "Secure@Pass1"
+    }
+  },
+  "TC-TC3": {
+    "overrides": {
+      "email": "valid_user_mfa_disabled@example.com",
+      "password": "IncorrectPassword123!"
+    }
+  },
+  "TC-TC4": {
+    "overrides": {
+      "email": "non_existent_user@example.com",
+      "password": "any_password"
+    }
+  },
+  "TC-TC5": {
+    "remove": [
+      "email"
+    ],
+    "overrides": {
+      "password": "Secure@Pass1"
+    }
+  },
+  "TC-TC6": {
+    "remove": [
+      "password"
+    ],
+    "overrides": {
+      "email": "valid_user_mfa_disabled@example.com"
+    }
+  },
+  "TC-TC7": {
+    "overrides": {
+      "email": "invalid-email-format",
+      "password": "Secure@Pass1"
+    }
+  },
+  "TC-TC8": {
+    "overrides": {
+      "email": "",
+      "password": "Secure@Pass1"
+    }
+  },
+  "TC-TC9": {
+    "overrides": {
+      "email": "valid_user_mfa_disabled@example.com",
+      "password": ""
+    }
+  },
+  "TC-TC10": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-TC11": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"user@example.com\", \"password\": \"pass\""
+    }
+  }
+}
