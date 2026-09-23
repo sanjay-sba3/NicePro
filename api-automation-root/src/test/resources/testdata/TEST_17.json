@@ -1,0 +1,94 @@
+{
+  "TC-TEST-17-1": {
+    "overrides": {
+      "email": "user.mfa.disabled@example.com",
+      "password": "ValidPassword123!"
+    }
+  },
+  "TC-TEST-17-2": {
+    "overrides": {
+      "email": "user.mfa.enabled@example.com",
+      "password": "ValidPassword123!"
+    }
+  },
+  "TC-TEST-17-3": {
+    "overrides": {
+      "email": "user.mfa.disabled@example.com",
+      "password": "ThisIsTheWrongPassword"
+    }
+  },
+  "TC-TEST-17-4": {
+    "overrides": {
+      "email": "non.existent.user@example.com",
+      "password": "anyPassword123"
+    }
+  },
+  "TC-TEST-17-5": {
+    "remove": [
+      "email"
+    ],
+    "overrides": {
+      "password": "ValidPassword123!"
+    }
+  },
+  "TC-TEST-17-6": {
+    "remove": [
+      "password"
+    ],
+    "overrides": {
+      "email": "user.mfa.disabled@example.com"
+    }
+  },
+  "TC-TEST-17-7": {
+    "overrides": {
+      "email": null,
+      "password": "ValidPassword123!"
+    }
+  },
+  "TC-TEST-17-8": {
+    "overrides": {
+      "email": "",
+      "password": "ValidPassword123!"
+    }
+  },
+  "TC-TEST-17-9": {
+    "overrides": {
+      "email": "user.mfa.disabled@example.com",
+      "password": null
+    }
+  },
+  "TC-TEST-17-10": {
+    "overrides": {
+      "email": "user.mfa.disabled@example.com",
+      "password": ""
+    }
+  },
+  "TC-TEST-17-11": {
+    "overrides": {
+      "email": "invalid-email-format",
+      "password": "anypassword"
+    }
+  },
+  "TC-TEST-17-12": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-TEST-17-13": {
+    "request_body": {
+      "type": "MISSING_BODY"
+    }
+  },
+  "TC-TEST-17-14": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"user@example.com\", \"password\": \"password\""
+    }
+  },
+  "TC-TEST-17-15": {
+    "overrides": {
+      "email": "' OR 1=1 --",
+      "password": "<script>alert('XSS')</script>"
+    }
+  }
+}
