@@ -1,0 +1,61 @@
+{
+  "TC-TEST-17-001": {},
+  "TC-TEST-17-002": {
+    "overrides": {
+      "email": "{{auth.mfa_enabled_username}}",
+      "password": "{{auth.mfa_enabled_password}}"
+    }
+  },
+  "TC-TEST-17-003": {},
+  "TC-TEST-17-004": {
+    "overrides": {
+      "password": "WrongPassword123"
+    }
+  },
+  "TC-TEST-17-005": {
+    "overrides": {
+      "email": "nonexistent-user@example.com"
+    }
+  },
+  "TC-TEST-17-007": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TC-TEST-17-008": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TC-TEST-17-009": {
+    "overrides": {
+      "email": "not-an-email"
+    }
+  },
+  "TC-TEST-17-010": {
+    "overrides": {
+      "email": ""
+    }
+  },
+  "TC-TEST-17-011": {
+    "overrides": {
+      "password": ""
+    }
+  },
+  "TC-TEST-17-012": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-TEST-17-013": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"test@example.com\", \"password\": \"password\",}"
+    }
+  },
+  "TC-TEST-17-014": {
+    "request_body": {
+      "type": "NULL"
+    }
+  }
+}
