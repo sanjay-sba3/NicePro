@@ -1,0 +1,53 @@
+{
+  "TC-LOGIN-001": {
+    "overrides": {
+      "email": "{{mfa_disabled_user.email}}",
+      "password": "{{mfa_disabled_user.password}}"
+    }
+  },
+  "TC-LOGIN-002": {
+    "overrides": {
+      "email": "{{mfa_enabled_user.email}}",
+      "password": "{{mfa_enabled_user.password}}"
+    }
+  },
+  "TC-LOGIN-003": {
+    "overrides": {
+      "email": "{{mfa_disabled_user.email}}",
+      "password": "{{random.invalidPassword}}"
+    }
+  },
+  "TC-LOGIN-004": {
+    "overrides": {
+      "email": "{{random.email}}",
+      "password": "{{random.password}}"
+    }
+  },
+  "TC-LOGIN-005": {
+    "overrides": {
+      "email": "invalid-email-format"
+    }
+  },
+  "TC-LOGIN-006": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TC-LOGIN-007": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TC-LOGIN-008": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-LOGIN-009": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\":\"test@test.com\", \"password\": \"SecurePass123\""
+    }
+  },
+  "TC-LOGIN-010": {}
+}
