@@ -1,0 +1,73 @@
+{
+  "TC-1": {
+    "overrides": {
+      "email": "test.user.mfa.disabled@example.com",
+      "password": "{{auth.password}}"
+    }
+  },
+  "TC-2": {
+    "overrides": {
+      "email": "test.user.mfa.enabled@example.com",
+      "password": "{{auth.password}}"
+    }
+  },
+  "TC-3": {
+    "overrides": {
+      "email": "test.user.mfa.disabled@example.com",
+      "password": "IncorrectPassword"
+    }
+  },
+  "TC-4": {
+    "overrides": {
+      "email": "invalid.user@example.com",
+      "password": "ValidPassword123!"
+    }
+  },
+  "TC-5": {
+    "overrides": {
+      "email": "non.existent.user@example.com",
+      "password": "anyPassword123"
+    }
+  },
+  "TC-6": {
+    "remove": [
+      "email"
+    ]
+  },
+  "TC-7": {
+    "remove": [
+      "password"
+    ]
+  },
+  "TC-8": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-9": {
+    "overrides": {
+      "email": null
+    }
+  },
+  "TC-10": {
+    "overrides": {
+      "password": null
+    }
+  },
+  "TC-11": {
+    "overrides": {
+      "email": 12345
+    }
+  },
+  "TC-12": {
+    "overrides": {
+      "password": true
+    }
+  },
+  "TC-13": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"test.user@example.com\", \"password\": \"ValidPassword123!\""
+    }
+  }
+}
