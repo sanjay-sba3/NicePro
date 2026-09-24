@@ -1,0 +1,46 @@
+{
+  "TC-1": {},
+  "TC-2": {},
+  "TC-3": {
+    "overrides": {
+      "password": "incorrect_password"
+    }
+  },
+  "TC-4": {},
+  "TC-5": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-6": {
+    "remove": [
+      "username_or_email"
+    ],
+    "overrides": {
+        "password": "{{auth.password}}"
+    }
+  },
+  "TC-7": {
+    "overrides": {
+      "password": ""
+    }
+  },
+  "TC-8": {
+    "overrides": {
+      "username_or_email": "invalid-email-format",
+      "password": "some_password"
+    }
+  },
+  "TC-9": {
+    "overrides": {
+      "username_or_email": "active.user.for.rate.limiting@example.com",
+      "password": "incorrect_password_repeated"
+    }
+  },
+  "TC-10": {
+    "overrides": {
+      "username_or_email": "user' OR '1'='1",
+      "password": "any_password"
+    }
+  }
+}
