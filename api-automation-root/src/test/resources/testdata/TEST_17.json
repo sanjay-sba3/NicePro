@@ -1,0 +1,81 @@
+{
+  "TC-1": {
+    "overrides": {
+      "email": "existing.user.mfa.disabled@example.com",
+      "password": "correctPassword123"
+    }
+  },
+  "TC-2": {
+    "overrides": {
+      "email": "existing.user@example.com",
+      "password": "wrongPassword456"
+    }
+  },
+  "TC-3": {
+    "overrides": {
+      "email": "nonexistent.user@example.com",
+      "password": "anyPassword"
+    }
+  },
+  "TC-5": {
+    "overrides": {
+      "password": "anyPassword"
+    },
+    "remove": [
+      "email"
+    ]
+  },
+  "TC-6": {
+    "overrides": {
+      "email": "any.user@example.com"
+    },
+    "remove": [
+      "password"
+    ]
+  },
+  "TC-7": {
+    "request_body": {
+      "type": "EMPTY_OBJECT"
+    }
+  },
+  "TC-8": {
+    "overrides": {
+      "email": 12345,
+      "password": "anyPassword"
+    }
+  },
+  "TC-9": {
+    "overrides": {
+      "email": "any.user@example.com",
+      "password": 12345
+    }
+  },
+  "TC-10": {
+    "overrides": {
+      "email": "",
+      "password": "anyPassword"
+    }
+  },
+  "TC-11": {
+    "overrides": {
+      "email": null,
+      "password": "anyPassword"
+    }
+  },
+  "TC-12": {
+    "request_body": {
+      "type": "MALFORMED_JSON",
+      "value": "{\"email\": \"test@test.com\",}"
+    }
+  },
+  "TC-13": {
+    "request_body": {
+      "type": "NULL"
+    }
+  },
+  "TC-14": {
+    "request_body": {
+      "type": "EMPTY_ARRAY"
+    }
+  }
+}
